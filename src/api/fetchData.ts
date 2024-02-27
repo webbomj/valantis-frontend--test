@@ -1,14 +1,31 @@
 import { store } from "../store/store";
+import { createHeaderMD5 } from "../utils/createHeaderMD5";
+import { bodyBuildType } from "./bodyBuild";
 
 export type methodTypes = "POST" | "GET" | "DELETE" | "PUT";
 
-export const fetchData = (body: unknown, method?: methodTypes) => {
-  return fetch(store.baseUrl, {
-    method: method ?? "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-Auth": "todo",
-    },
-    body: JSON.stringify(body),
-  });
+export const fetchData = async (body: bodyBuildType, method?: methodTypes) => {
+  try {
+    const result = await fetch(store.baseUrl, {
+      method: method ?? "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Auth": createHeaderMD5(),
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (result.status === 500) {
+      throw Error(`Error with status code ${result.status}`);
+    }
+
+    return result;
+  } catch (e: unknown) {
+    if (typeof e === "string") {
+      console.log(e);
+    }
+    if (e instanceof Error) {
+      console.log(e.message);
+    }
+  }
 };

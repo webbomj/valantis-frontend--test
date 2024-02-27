@@ -4,3 +4,5 @@ export const bodyBuild = <T>(action: actionParams, params: T) => ({
   action,
   params,
 });
+
+export type bodyBuildType = ReturnType<typeof bodyBuild>;

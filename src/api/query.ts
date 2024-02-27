@@ -1,20 +1,37 @@
 import { bodyBuild } from "./bodyBuild";
 import { fetchData } from "./fetchData";
 
-export const getIds = (limit?: number, offset?: number) =>
-  fetchData(
+export const getIds = async <T>(
+  limit?: number,
+  offset?: number
+): Promise<T> => {
+  const response = await fetchData(
     bodyBuild("get_ids", {
       limit,
       offset,
     })
   );
 
-export const getItems = (ids?: string[]) =>
-  fetchData(
+  const data = (await response?.json()) as Promise<T>;
+  return await data;
+};
+
+export interface Good {
+  brand: string | null;
+  id: string;
+  price: 16700.0;
+  product: string;
+}
+
+export const getItems = async <T>(ids?: string[]): Promise<T> => {
+  const response = await fetchData(
     bodyBuild("get_items", {
       ids,
     })
   );
+  const data = (await response?.json()) as Promise<T>;
+  return await data;
+};
 
 export const getFields = ({
   field,

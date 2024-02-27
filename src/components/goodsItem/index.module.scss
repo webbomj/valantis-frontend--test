@@ -1,0 +1,21 @@
+.good {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 220px;
+    min-height: 200px;
+    padding: 5px;
+    list-style-type: none;
+    border: 1px solid black;
+}
+
+.title {
+    font-size: 18px;
+    color: brown
+}
+
+.price {
+    font-size: 22px;
+    color: black;
+    font-weight: bold;
+}
