@@ -1,5 +1,7 @@
 # Тестовое задание для Valantis
 
+[DEMO](https://webbomj.github.io/valantis-frontend--test/)
+
 ## Как запускать
 1. клонируете
 2. устанавливаете зависимости
