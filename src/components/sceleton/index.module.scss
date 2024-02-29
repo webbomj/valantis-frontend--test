@@ -3,8 +3,10 @@
     flex-direction: column;
     justify-content: space-between;
     width: 220px;
-    min-height: 200px;
-    padding: 5px;
+    height: 200px;
     list-style-type: none;
-    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.16);
+    position: relative;
+    vertical-align: top;
 }

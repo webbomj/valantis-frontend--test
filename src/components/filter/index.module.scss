@@ -1,0 +1,13 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button {
+    background-image: linear-gradient(to top, #fc8507, #ffa218);
+}
+
+.button:hover {
+    box-shadow: inset 0 100px 0 rgba(255,255,255,.1);
+}
+

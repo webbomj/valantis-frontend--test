@@ -50,19 +50,18 @@ export const getFields = ({
     })
   );
 
-export const filterData = <T>({
-  field,
-  offset,
-  limit,
-}: {
-  field?: T;
-  offset?: number;
-  limit?: number;
-}) =>
-  fetchData(
+export type FilterDataType = "price" | "brand" | "product";
+
+export const filterData = async <T extends FilterDataType, P>(
+  field: T,
+  fieldValue: string | number
+) => {
+  const response = await fetchData(
     bodyBuild("filter", {
-      field,
-      offset,
-      limit,
+      [field]: fieldValue,
     })
   );
+
+  const data = (await response?.json()) as Promise<P>;
+  return await data;
+};
