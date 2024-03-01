@@ -9,7 +9,10 @@ export const createHeaderMD5 = () => {
     currentDate.getMonth() + 1 >= 10
       ? currentDate.getMonth() + 1
       : `0${currentDate.getMonth() + 1}`;
-  const day = currentDate.getDate();
+  const day =
+    currentDate.getDate() >= 10
+      ? currentDate.getDate()
+      : `0${currentDate.getDate()}`;
 
   const formatedDate = `${year}${month}${day}`;
 
